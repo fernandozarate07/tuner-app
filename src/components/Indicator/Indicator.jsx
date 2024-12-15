@@ -8,18 +8,16 @@ const Indicator = () => {
   };
   return (
     <div className={styles.indicator}>
-      <div className={styles.tuner__indicatorContainer}>
-        <div className={styles.tuner__indicatorContent}>
-          {[...Array(13)].map((_, index) => (
-            <div key={index} className={styles.tuner__lineContainer}>
-              <div className={styles.tuner__line} style={{ height: `${getLineSize(index)}%` }}></div>
-            </div>
-          ))}
-        </div>
+      <div className={styles.indicator__screen}>
+        {[...Array(13)].map((_, index) => (
+          <div key={index} className={styles.indicator__lineContainer}>
+            <div className={styles.indicator__line} style={{ height: `${getLineSize(index)}%` }}></div>
+          </div>
+        ))}
       </div>
-      <div className={`flex-c-c ${styles.tuner__noteDisplay}`}>
-        <span className={styles.tuner_item}>E</span>
-        <span className={`${styles.tuner_item} ${styles.tuner_frequency}`}>(440Hz)</span>
+      <div className={`flex-c-c-column ${styles.indicator__noteDisplay}`}>
+        <span className={`${styles.indicator__item} ${styles.indicator__note}`}>E</span>
+        <span className={`${styles.indicator__item} ${styles.indicator__frequency}`}>(440Hz)</span>
       </div>
     </div>
   );

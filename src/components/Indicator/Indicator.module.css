@@ -1,30 +1,31 @@
-.tuner__indicatorContainer {
+.indicator {
   width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tuner__indicatorContent {
-  width: 100%;
-  max-width: 1000px;
-  height: 300px;
 
   display: grid;
+  grid-template-rows: 1fr auto;
+}
+.indicator__screen {
+  width: 100%;
+  max-width: 600px;
+  min-height: 200px;
+
+  padding: 40px;
+
+  margin: auto;
+  display: grid;
   grid-template-columns: repeat(13, 1fr);
-  gap: 5px;
+
+  border-radius: 10px;
+  background-color: var(--gr);
 }
 
-.tuner__lineContainer {
-  height: 100%;
-
+.indicator__lineContainer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-.tuner__line {
+.indicator__line {
   width: 10px;
   height: 100%;
 
@@ -32,21 +33,11 @@
   background-color: var(--bk);
   transition: height 0.3s ease;
 }
-
-.tuner__noteDisplay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.tuner_item {
-  padding: 10px;
-  font-size: 5rem;
+.indicator__item {
+  font-size: 8rem;
   font-weight: 400;
 }
-
-.tuner_frequency {
-  font-size: 2rem;
+.indicator__frequency {
+  font-size: 1rem;
   color: var(--bk);
 }

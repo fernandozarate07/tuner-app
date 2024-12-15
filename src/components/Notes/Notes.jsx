@@ -12,7 +12,7 @@ const Notes = ({ selectedInstrument }) => {
   }
 
   return (
-    <div className={styles.notes}>
+    <div className={`transition ${styles.notes}`}>
       {notes.map((note, index) => (
         <div key={index} className={styles.notes__item}>
           {note}

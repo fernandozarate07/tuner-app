@@ -3,7 +3,8 @@
   gap: 20px;
 }
 .notes__item {
+  padding: 4px 10px;
+
   border-radius: 50%;
-  background-color: var(--wh);
-  padding: 5px 10px;
+  border: 0.5px solid var(--bk);
 }
