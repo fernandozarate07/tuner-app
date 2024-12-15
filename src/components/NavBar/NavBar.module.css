@@ -1,0 +1,16 @@
+.navBar {
+  margin-inline: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navBar__logo {
+  font-weight: 800;
+}
+.navBar__itemsContainer {
+  display: flex;
+  gap: 20px;
+}
+.navBar__item {
+  font-size: var(--s);
+}
