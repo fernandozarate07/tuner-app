@@ -1,0 +1,31 @@
+.tuner {
+  margin-inline: 200px;
+  width: 100%;
+  height: auto;
+  min-height: 600px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: var(--gr);
+}
+.tuner__instrumentsBar {
+  padding-inline: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  background-color: var(--gr);
+}
+.tuner__item {
+  width: 100px;
+  min-height: 100px;
+
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--wh);
+  cursor: pointer;
+}
