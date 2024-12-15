@@ -1,0 +1,9 @@
+.notes {
+  display: flex;
+  gap: 20px;
+}
+.notes__item {
+  border-radius: 50%;
+  background-color: var(--wh);
+  padding: 5px 10px;
+}

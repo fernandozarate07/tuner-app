@@ -1,0 +1,52 @@
+.tuner__indicatorContainer {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tuner__indicatorContent {
+  width: 100%;
+  max-width: 1000px;
+  height: 300px;
+
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  gap: 5px;
+}
+
+.tuner__lineContainer {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.tuner__line {
+  width: 10px;
+  height: 100%;
+
+  border-radius: 10px;
+  background-color: var(--bk);
+  transition: height 0.3s ease;
+}
+
+.tuner__noteDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.tuner_item {
+  padding: 10px;
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.tuner_frequency {
+  font-size: 2rem;
+  color: var(--bk);
+}

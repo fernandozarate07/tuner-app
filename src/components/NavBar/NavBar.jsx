@@ -2,7 +2,7 @@ import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   return (
-    <div className={styles.navBar}>
+    <div className={`pading-bl-20 ${styles.navBar}`}>
       <h1 className={`color-primary ${styles.navBar__logo}`}>TrueTone</h1>
       <div className={styles.navBar__itemsContainer}>
         <a href="#" className={`btn ${styles.navBar__item}`}>

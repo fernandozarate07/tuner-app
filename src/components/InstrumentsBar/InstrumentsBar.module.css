@@ -1,0 +1,9 @@
+.instrumentsBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.instrumentsBar__item {
+  cursor: pointer;
+}

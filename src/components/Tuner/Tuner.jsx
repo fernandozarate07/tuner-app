@@ -1,30 +1,21 @@
-import { useState } from "react";
+import Indicator from "../Indicator/Indicator";
+import InstrumentsBar from "../InstrumentsBar/InstrumentsBar";
+import Notes from "../Notes/Notes";
 import styles from "./Tuner.module.css";
+import { useState } from "react";
+
 const Tuner = () => {
-  const [selecterInstrument, setSelecterInstrument] = useState("guitar");
+  const [selectedInstrument, setSelectedInstrument] = useState("guitar");
+
   return (
     <div className={styles.tuner}>
-      {/* instrumentsBar */}
-      <div className={styles.tuner__instrumentsBar}>
-        <div
-          className={`${styles.tuner__item} ${selecterInstrument === "guitar" ? "active" : "inactive"}`}
-          onClick={() => setSelecterInstrument("guitar")}>
-          Guitar
-        </div>
-        <div
-          className={`${styles.tuner__item} ${selecterInstrument === "bass" ? "active" : "inactive"}`}
-          onClick={() => setSelecterInstrument("bass")}>
-          Bass
-        </div>
-        <div
-          className={`${styles.tuner__item} ${selecterInstrument === "ukulele" ? "active" : "inactive"}`}
-          onClick={() => setSelecterInstrument("ukulele")}>
-          Ukulele
-        </div>
+      <div className={styles.tuner__header}>
+        <InstrumentsBar setSelectedInstrument={setSelectedInstrument} selectedInstrument={selectedInstrument} />
+        <Notes selectedInstrument={selectedInstrument} />
       </div>
-      {/* tuner */}
-      <div className={styles.tuner__content}></div>
+      <Indicator />
     </div>
   );
 };
+
 export default Tuner;
