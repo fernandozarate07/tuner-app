@@ -13,7 +13,6 @@
   display: grid;
   grid-template-columns: repeat(13, 1fr);
   border-radius: 10px;
-  background-color: var(--gr);
 }
 
 .indicator__lineContainer {

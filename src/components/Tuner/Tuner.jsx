@@ -22,9 +22,9 @@ const Tuner = () => {
       .then((stream) => {
         microphoneRef.current = audioContextRef.current.createMediaStreamSource(stream);
         analyserRef.current = audioContextRef.current.createAnalyser();
-        analyserRef.current.fftSize = 4096; // Aumentamos el tamaño de la FFT
+        analyserRef.current.fftSize = 8192; // Aumentar la resolución de la FFT
         dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
-        analyserRef.current.smoothingTimeConstant = 0.85; // Suavizamos la señal
+        analyserRef.current.smoothingTimeConstant = 0.85; // Suavizar la señal
         microphoneRef.current.connect(analyserRef.current);
         updateFrequency();
       })
@@ -91,7 +91,7 @@ const Tuner = () => {
 
     // Calcular la frecuencia fundamental (de acuerdo con el índice del pico)
     const sampleRate = audioContextRef.current.sampleRate;
-    const frequency = (maxIndex * sampleRate) / analyserRef.current.fftSize;
+    const frequency = calculateFrequency(maxIndex, analyserRef.current.fftSize, sampleRate, dataArrayRef.current);
 
     // Usamos el valor de la frecuencia con mayor precisión
     setFrequency(frequency.toFixed(2));
@@ -102,6 +102,18 @@ const Tuner = () => {
 
     // Continuar con el próximo frame
     requestAnimationFrame(updateFrequency);
+  };
+
+  // Función para calcular la frecuencia con interpolación
+  const calculateFrequency = (maxIndex, fftSize, sampleRate, dataArray) => {
+    const peakValue = dataArray[maxIndex];
+    const leftValue = dataArray[maxIndex - 1] || 0;
+    const rightValue = dataArray[maxIndex + 1] || 0;
+
+    // Interpolación cuadrática para mejorar la precisión de la frecuencia
+    const interpolatedFreq =
+      (maxIndex + (0.5 * (rightValue - leftValue)) / (2 * peakValue - leftValue - rightValue)) * (sampleRate / fftSize);
+    return interpolatedFreq;
   };
 
   return (
