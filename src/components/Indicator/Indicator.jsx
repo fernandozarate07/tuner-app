@@ -1,8 +1,7 @@
 import styles from "./Indicator.module.css";
 
-// Eliminamos la definición de las notas de aquí y las pasamos como prop desde Tuner
-const Indicator = ({ frequency, note, instrumentNotes }) => {
-  const activeIndex = 6; // Índice de la línea central
+const Indicator = ({ frequency, note, instrumentNotes, isRunning, setIsRunning }) => {
+  const activeIndex = 6;
 
   const getLineSize = (index) => {
     const distance = Math.abs(index - activeIndex);
@@ -12,30 +11,26 @@ const Indicator = ({ frequency, note, instrumentNotes }) => {
   const getLineColor = (index) => {
     const selectedNote = instrumentNotes.find((n) => n.note === note);
     const lineFreq = selectedNote ? selectedNote.freq + (index - activeIndex) * 5 : 0;
-
-    // Usar una pequeña tolerancia para detectar si la frecuencia está cerca
-    const tolerance = 2; // 2 Hz de tolerancia
+    const tolerance = 2;
 
     if (Math.abs(frequency - lineFreq) <= tolerance) {
       if (index < 3) {
-        return styles.redLine; // Primera sección roja
+        return styles.redLine;
       } else if (index < 6) {
-        return styles.yellowLine; // Segunda sección amarilla
+        return styles.yellowLine;
       } else if (index === activeIndex) {
-        return styles.greenLine; // Línea central verde
+        return styles.greenLine;
       } else if (index < 10) {
-        return styles.yellowLine; // Cuarta sección amarilla
+        return styles.yellowLine;
       } else {
-        return styles.redLine; // Última sección roja
+        return styles.redLine;
       }
     }
-    return styles.inactiveLine; // Línea inactiva (negra por defecto)
+    return styles.inactiveLine;
   };
 
-  // Verificar si la línea central debe estar activa para aplicar el color a la nota
   const selectedNote = instrumentNotes.find((n) => n.note === note);
   const isCentralLineActive = selectedNote && Math.abs(frequency - selectedNote.freq) <= 2;
-
   const noteColorClass = isCentralLineActive ? styles.greenNote : styles.defaultNote;
 
   return (
@@ -46,7 +41,10 @@ const Indicator = ({ frequency, note, instrumentNotes }) => {
 
           return (
             <div key={index} className={styles.indicator__lineContainer}>
-              <div className={`${styles.indicator__line} ${lineColor}`} style={{ height: `${getLineSize(index)}%` }} />
+              <div
+                className={`${styles.indicator__line} ${isRunning ? lineColor : ""}`}
+                style={{ height: `${getLineSize(index)}%` }}
+              />
             </div>
           );
         })}
@@ -55,8 +53,12 @@ const Indicator = ({ frequency, note, instrumentNotes }) => {
         <span className={`${styles.indicator__item} ${styles.indicator__note} ${noteColorClass}`}>{note || "-"}</span>
       </div>
       <div className={`flex-c-c ${styles.indicator__btnContainer}`}>
-        <button className={`btn ${styles.indicator__btn}`}>Start</button>
-        <button className={`btn ${styles.indicator__btn}`}>Pause</button>
+        <button className={`btn ${styles.indicator__btn}`} onClick={() => setIsRunning(true)}>
+          Start
+        </button>
+        <button className={`btn ${styles.indicator__btn}`} onClick={() => setIsRunning(false)}>
+          Pause
+        </button>
       </div>
     </div>
   );

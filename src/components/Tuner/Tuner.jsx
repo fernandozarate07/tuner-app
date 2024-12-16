@@ -4,7 +4,6 @@ import InstrumentsBar from "../InstrumentsBar/InstrumentsBar";
 import Notes from "../Notes/Notes";
 import styles from "./Tuner.module.css";
 
-// Definimos las notas estándar en un solo lugar
 const instrumentNotes = {
   guitar: [
     { note: "E", freq: 82.41 },
@@ -32,12 +31,15 @@ const Tuner = () => {
   const [selectedInstrument, setSelectedInstrument] = useState("guitar");
   const [frequency, setFrequency] = useState(null);
   const [note, setNote] = useState(null);
+  const [isRunning, setIsRunning] = useState(false); // Estado para controlar el inicio/pausa
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
   const microphoneRef = useRef(null);
   const dataArrayRef = useRef(null);
 
   useEffect(() => {
+    if (!isRunning) return; // No iniciar el procesamiento si no está en "running"
+
     audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
     navigator.mediaDevices
       .getUserMedia({ audio: true })
@@ -56,7 +58,7 @@ const Tuner = () => {
       if (microphoneRef.current) microphoneRef.current.disconnect();
       if (audioContextRef.current) audioContextRef.current.close();
     };
-  }, [selectedInstrument]);
+  }, [selectedInstrument, isRunning]); // Depende de "isRunning" para activar/desactivar el análisis
 
   const getClosestNote = (frequency) => {
     const instrumentNotesForSelected = instrumentNotes[selectedInstrument];
@@ -75,6 +77,8 @@ const Tuner = () => {
   };
 
   const updateFrequency = () => {
+    if (!isRunning) return; // Solo procesar si está "running"
+
     analyserRef.current.getByteFrequencyData(dataArrayRef.current);
     let maxIndex = 0;
     let maxValue = 0;
@@ -111,12 +115,13 @@ const Tuner = () => {
         <InstrumentsBar setSelectedInstrument={setSelectedInstrument} selectedInstrument={selectedInstrument} />
         <Notes selectedInstrument={selectedInstrument} />
       </div>
-      {/* Pasamos las notas como prop */}
       <Indicator
         frequency={frequency}
         note={note}
         selectedInstrument={selectedInstrument}
         instrumentNotes={instrumentNotes[selectedInstrument]}
+        isRunning={isRunning} // Pasamos el estado isRunning como prop
+        setIsRunning={setIsRunning} // Pasamos la función para cambiar el estado
       />
     </div>
   );
