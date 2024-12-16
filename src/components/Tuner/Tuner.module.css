@@ -4,21 +4,20 @@
   margin-inline: 200px;
 
   width: 100%;
-  min-height: 600px;
+  min-height: 400px;
 
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 40px;
 
   border-radius: 15px;
-
-  border: 2px solid var(--bk);
+  background-color: var(--gr);
 }
 .tuner__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 2px solid var(--bk);
+  border-bottom: 2px solid var(--wh);
   padding-bottom: 10px;
 }

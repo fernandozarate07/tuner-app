@@ -7,24 +7,24 @@ import styles from "./Tuner.module.css";
 // Definimos las notas estándar en un solo lugar
 const instrumentNotes = {
   guitar: [
-    { note: "E2", freq: 82.41 },
-    { note: "A2", freq: 110.0 },
-    { note: "D3", freq: 146.83 },
-    { note: "G3", freq: 196.0 },
-    { note: "B3", freq: 246.94 },
-    { note: "E4", freq: 329.63 },
+    { note: "E", freq: 82.41 },
+    { note: "A", freq: 110.0 },
+    { note: "D", freq: 146.83 },
+    { note: "G", freq: 196.0 },
+    { note: "B", freq: 246.94 },
+    { note: "E", freq: 329.63 },
   ],
   bass: [
-    { note: "E1", freq: 41.2 },
-    { note: "A1", freq: 55.0 },
-    { note: "D2", freq: 73.42 },
-    { note: "G2", freq: 98.0 },
+    { note: "E", freq: 41.2 },
+    { note: "A", freq: 55.0 },
+    { note: "D", freq: 73.42 },
+    { note: "G", freq: 98.0 },
   ],
   ukulele: [
-    { note: "G4", freq: 392.0 },
-    { note: "C4", freq: 261.63 },
-    { note: "E4", freq: 329.63 },
-    { note: "A4", freq: 440.0 },
+    { note: "G", freq: 392.0 },
+    { note: "C", freq: 261.63 },
+    { note: "E", freq: 329.63 },
+    { note: "A", freq: 440.0 },
   ],
 };
 

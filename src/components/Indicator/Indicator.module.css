@@ -13,6 +13,7 @@
   display: grid;
   grid-template-columns: repeat(13, 1fr);
   border-radius: 10px;
+  gap: 5px;
 }
 
 .indicator__lineContainer {
@@ -22,10 +23,10 @@
 }
 
 .indicator__line {
-  width: 20px;
+  width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-color: var(--bk); /* Línea inactiva (negra por defecto) */
+  background-color: var(--wh); /* Línea inactiva (negra por defecto) */
   transition: height 0.3s ease;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .indicator__line.inactiveLine {
-  background-color: var(--bk); /* Línea inactiva (negra) */
+  background-color: var(--wh); /* Línea inactiva (negra) */
 }
 
 /* Nuevos colores para las líneas activas */
@@ -52,10 +53,23 @@
 
 .indicator__item {
   font-size: 8rem;
-  font-weight: 400;
+  font-weight: 800;
 }
 
 .indicator__frequency {
-  font-size: 1rem;
-  color: var(--bk);
+  font-size: var(--s);
+  font-weight: 400;
+}
+.indicator__btnContainer {
+  gap: 20px;
+}
+.indicator__btn {
+  background-color: var(--wh);
+}
+.defaultNote {
+  color: var(--bk); /* Color por defecto (negro) */
+}
+
+.greenNote {
+  color: var(--primary); /* Mismo color que la línea activa central (verde) */
 }

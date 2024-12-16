@@ -1,15 +1,15 @@
 import styles from "./Indicator.module.css";
 
 // Eliminamos la definición de las notas de aquí y las pasamos como prop desde Tuner
-const Indicator = ({ frequency, note, selectedInstrument, instrumentNotes }) => {
+const Indicator = ({ frequency, note, instrumentNotes }) => {
+  const activeIndex = 6; // Índice de la línea central
+
   const getLineSize = (index) => {
-    const activeIndex = 6;
     const distance = Math.abs(index - activeIndex);
     return 100 - distance * 15;
   };
 
   const getLineColor = (index) => {
-    const activeIndex = 6;
     const selectedNote = instrumentNotes.find((n) => n.note === note);
     const lineFreq = selectedNote ? selectedNote.freq + (index - activeIndex) * 5 : 0;
 
@@ -17,7 +17,6 @@ const Indicator = ({ frequency, note, selectedInstrument, instrumentNotes }) => 
     const tolerance = 2; // 2 Hz de tolerancia
 
     if (Math.abs(frequency - lineFreq) <= tolerance) {
-      // Aquí se cambia el color dependiendo de la cercanía
       if (index < 3) {
         return styles.redLine; // Primera sección roja
       } else if (index < 6) {
@@ -33,6 +32,12 @@ const Indicator = ({ frequency, note, selectedInstrument, instrumentNotes }) => 
     return styles.inactiveLine; // Línea inactiva (negra por defecto)
   };
 
+  // Verificar si la línea central debe estar activa para aplicar el color a la nota
+  const selectedNote = instrumentNotes.find((n) => n.note === note);
+  const isCentralLineActive = selectedNote && Math.abs(frequency - selectedNote.freq) <= 2;
+
+  const noteColorClass = isCentralLineActive ? styles.greenNote : styles.defaultNote;
+
   return (
     <div className={styles.indicator}>
       <div className={styles.indicator__screen}>
@@ -47,10 +52,11 @@ const Indicator = ({ frequency, note, selectedInstrument, instrumentNotes }) => 
         })}
       </div>
       <div className={`flex-c-c-column ${styles.indicator__noteDisplay}`}>
-        <span className={`${styles.indicator__item} ${styles.indicator__note}`}>{note || "-"}</span>
-        <span className={`${styles.indicator__item} ${styles.indicator__frequency}`}>
-          {frequency ? `${frequency} Hz` : "(Detecting...)"}
-        </span>
+        <span className={`${styles.indicator__item} ${styles.indicator__note} ${noteColorClass}`}>{note || "-"}</span>
+      </div>
+      <div className={`flex-c-c ${styles.indicator__btnContainer}`}>
+        <button className={`btn ${styles.indicator__btn}`}>Start</button>
+        <button className={`btn ${styles.indicator__btn}`}>Pause</button>
       </div>
     </div>
   );
