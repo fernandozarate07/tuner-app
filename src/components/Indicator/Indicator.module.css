@@ -26,7 +26,7 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-color: var(--wh); /* Línea inactiva (negra por defecto) */
+  background-color: var(--wh);
   transition: height 0.3s ease;
 }
 
@@ -67,7 +67,7 @@
   background-color: var(--wh);
 }
 .defaultNote {
-  color: var(--bk); /* Color por defecto (negro) */
+  color: var(--wh);
 }
 
 .greenNote {

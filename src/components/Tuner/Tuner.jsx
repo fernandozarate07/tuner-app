@@ -6,12 +6,12 @@ import styles from "./Tuner.module.css";
 
 const instrumentNotes = {
   guitar: [
-    { note: "E", freq: 82.41 },
+    { note: "E2", freq: 82.41 },
     { note: "A", freq: 110.0 },
     { note: "D", freq: 146.83 },
     { note: "G", freq: 196.0 },
     { note: "B", freq: 246.94 },
-    { note: "E", freq: 329.63 },
+    { note: "E4", freq: 329.63 },
   ],
   bass: [
     { note: "E", freq: 41.2 },
