@@ -6,8 +6,8 @@ import styles from "./Tuner.module.css";
 
 const Tuner = () => {
   const [selectedInstrument, setSelectedInstrument] = useState("guitar");
-  const [frequency, setFrequency] = useState(null); // Para la frecuencia detectada
-  const [note, setNote] = useState(null); // Para la nota detectada
+  const [frequency, setFrequency] = useState(null);
+  const [note, setNote] = useState(null);
 
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
@@ -35,7 +35,7 @@ const Tuner = () => {
       if (microphoneRef.current) microphoneRef.current.disconnect();
       if (audioContextRef.current) audioContextRef.current.close();
     };
-  }, [selectedInstrument]); // Agregar dependencia de selectedInstrument
+  }, [selectedInstrument]);
 
   const getClosestNote = (frequency) => {
     const notes = {
@@ -110,7 +110,7 @@ const Tuner = () => {
         <InstrumentsBar setSelectedInstrument={setSelectedInstrument} selectedInstrument={selectedInstrument} />
         <Notes selectedInstrument={selectedInstrument} />
       </div>
-      <Indicator frequency={frequency} note={note} />
+      <Indicator frequency={frequency} note={note} selectedInstrument={selectedInstrument} />
     </div>
   );
 };
