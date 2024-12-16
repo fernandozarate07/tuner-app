@@ -8,7 +8,6 @@ const Tuner = () => {
   const [selectedInstrument, setSelectedInstrument] = useState("guitar");
   const [frequency, setFrequency] = useState(null); // Para la frecuencia detectada
   const [note, setNote] = useState(null); // Para la nota detectada
-  const [error, setError] = useState(null); // Para manejar errores
 
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
@@ -23,22 +22,20 @@ const Tuner = () => {
       .then((stream) => {
         microphoneRef.current = audioContextRef.current.createMediaStreamSource(stream);
         analyserRef.current = audioContextRef.current.createAnalyser();
-        analyserRef.current.fftSize = 4096;
+        analyserRef.current.fftSize = 4096; // Aumentamos el tamaño de la FFT
         dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
-        analyserRef.current.smoothingTimeConstant = 0.85;
+        analyserRef.current.smoothingTimeConstant = 0.85; // Suavizamos la señal
         microphoneRef.current.connect(analyserRef.current);
         updateFrequency();
       })
-      .catch((err) => {
-        setError("No se pudo acceder al micrófono.");
-        console.error("Error accessing microphone: ", err);
-      });
+      .catch((error) => console.error("Error accessing microphone: ", error));
 
+    // Limpiar recursos al desmontar el componente
     return () => {
       if (microphoneRef.current) microphoneRef.current.disconnect();
       if (audioContextRef.current) audioContextRef.current.close();
     };
-  }, []);
+  }, [selectedInstrument]); // Agregar dependencia de selectedInstrument
 
   const getClosestNote = (frequency) => {
     const notes = {
@@ -50,16 +47,33 @@ const Tuner = () => {
         { note: "B3", freq: 246.94 },
         { note: "E4", freq: 329.63 },
       ],
+      bass: [
+        { note: "E1", freq: 41.2 },
+        { note: "A1", freq: 55.0 },
+        { note: "D2", freq: 73.42 },
+        { note: "G2", freq: 98.0 },
+      ],
+      ukulele: [
+        { note: "G4", freq: 392.0 },
+        { note: "C4", freq: 261.63 },
+        { note: "E4", freq: 329.63 },
+        { note: "A4", freq: 440.0 },
+      ],
     };
 
     const instrumentNotes = notes[selectedInstrument];
-    return instrumentNotes.reduce(
-      (closestNote, currentNote) => {
-        const diff = Math.abs(frequency - currentNote.freq);
-        return diff < closestNote.diff ? { note: currentNote.note, diff } : closestNote;
-      },
-      { note: null, diff: Infinity }
-    ).note;
+    let closestNote = null;
+    let minDiff = Infinity;
+
+    instrumentNotes.forEach(({ note, freq }) => {
+      const diff = Math.abs(frequency - freq);
+      if (diff < minDiff) {
+        closestNote = note;
+        minDiff = diff;
+      }
+    });
+
+    return closestNote;
   };
 
   const updateFrequency = () => {
@@ -75,15 +89,18 @@ const Tuner = () => {
       }
     }
 
-    // Calcular la frecuencia fundamental
+    // Calcular la frecuencia fundamental (de acuerdo con el índice del pico)
     const sampleRate = audioContextRef.current.sampleRate;
     const frequency = (maxIndex * sampleRate) / analyserRef.current.fftSize;
+
+    // Usamos el valor de la frecuencia con mayor precisión
     setFrequency(frequency.toFixed(2));
 
     // Encontrar la nota más cercana
     const closestNote = getClosestNote(frequency);
     setNote(closestNote);
 
+    // Continuar con el próximo frame
     requestAnimationFrame(updateFrequency);
   };
 
@@ -94,7 +111,6 @@ const Tuner = () => {
         <Notes selectedInstrument={selectedInstrument} />
       </div>
       <Indicator frequency={frequency} note={note} />
-      {error && <div className="error">{error}</div>}
     </div>
   );
 };
