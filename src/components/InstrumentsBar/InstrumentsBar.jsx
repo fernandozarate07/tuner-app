@@ -6,17 +6,17 @@ const InstrumentsBar = ({ setSelectedInstrument, selectedInstrument }) => {
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "guitar" ? "active" : "inactive"}`}
         onClick={() => setSelectedInstrument("guitar")}>
-        Guitar
+        GUITAR
       </div>
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "bass" ? "active" : "inactive"}`}
         onClick={() => setSelectedInstrument("bass")}>
-        Bass
+        BASS
       </div>
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "ukulele" ? "active" : "inactive"}`}
         onClick={() => setSelectedInstrument("ukulele")}>
-        Ukulele
+        UKULELE
       </div>
     </div>
   );

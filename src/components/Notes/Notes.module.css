@@ -1,10 +1,19 @@
 .notes {
   display: flex;
   gap: 20px;
+  transition: opacity 0.5s ease-in-out; /* Transición de opacidad */
 }
+
+.fadeIn {
+  opacity: 1; /* Totalmente visible */
+}
+
+.fadeOut {
+  opacity: 0; /* Totalmente invisible */
+}
+
 .notes__item {
   padding: 4px 10px;
-
   border-radius: 50%;
-  border: 0.5px solid var(--bk);
+  background-color: var(--gr);
 }

@@ -106,7 +106,7 @@ const Tuner = () => {
   };
 
   return (
-    <div className={`relieve-out ${styles.tuner}`}>
+    <div className={`${styles.tuner}`}>
       <div className={styles.tuner__header}>
         <InstrumentsBar setSelectedInstrument={setSelectedInstrument} selectedInstrument={selectedInstrument} />
         <Notes selectedInstrument={selectedInstrument} />

@@ -11,9 +11,9 @@ const NavBar = () => {
         <a href="#" className={`btn ${styles.navBar__item}`}>
           Games
         </a>
-        <a href="#" className={`btn ${styles.navBar__item}`}>
+        {/* <a href="#" className={`btn ${styles.navBar__item}`}>
           Credits
-        </a>
+        </a> */}
       </div>
     </div>
   );

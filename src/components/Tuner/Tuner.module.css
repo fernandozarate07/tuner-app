@@ -11,12 +11,14 @@
   gap: 40px;
 
   border-radius: 15px;
+
+  border: 2px solid var(--bk);
 }
 .tuner__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 0.5px solid var(--bk);
+  border-bottom: 2px solid var(--bk);
   padding-bottom: 10px;
 }
