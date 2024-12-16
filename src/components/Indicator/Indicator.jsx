@@ -17,7 +17,7 @@ const Indicator = () => {
       </div>
       <div className={`flex-c-c-column ${styles.indicator__noteDisplay}`}>
         <span className={`${styles.indicator__item} ${styles.indicator__note}`}>E</span>
-        <span className={`${styles.indicator__item} ${styles.indicator__frequency}`}>(440Hz)</span>
+        <span className={`${styles.indicator__item} ${styles.indicator__frequency}`}>(440H)</span>
       </div>
     </div>
   );
