@@ -15,6 +15,9 @@ const NavBar = ({ setSection }) => {
           Credits
         </a> */}
       </div>
+      <button className={styles.navBar__menuIcon}>
+        <i className="fa-solid fa-bars"></i>
+      </button>
     </div>
   );
 };
