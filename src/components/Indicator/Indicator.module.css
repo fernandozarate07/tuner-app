@@ -61,10 +61,12 @@
   font-weight: 400;
 }
 .indicator__btnContainer {
-  gap: 20px;
+  gap: 40px;
 }
 .indicator__btn {
   background-color: var(--wh);
+  padding: 10px 20px;
+  font-size: var(--l);
 }
 .defaultNote {
   color: var(--wh);

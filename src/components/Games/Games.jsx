@@ -6,7 +6,7 @@ const Games = () => {
       <h1 className={styles.title}>¡Oops!</h1>
       <div>
         <p className={styles.message}>Estamos trabajando en esta sección.</p>
-        <p className={styles.message}>Por favor, vuelve más tarde.</p>
+        <p className={styles.message}>Por favor, vuelve otro día.</p>
       </div>
     </div>
   );

@@ -132,6 +132,9 @@ button {
   background-color: var(--bk);
   color: var(--wh);
 }
+.btn:hover i{
+  color: var(--gr);
+}
 .visible {
   opacity: 1;
 }

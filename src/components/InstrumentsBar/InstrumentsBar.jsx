@@ -6,12 +6,12 @@ const InstrumentsBar = ({ setSelectedInstrument, selectedInstrument }) => {
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "guitar" ? "active" : "inactive"}`}
         onClick={() => setSelectedInstrument("guitar")}>
-        Guitar
+        Guitarra
       </div>
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "bass" ? "active" : "inactive"}`}
         onClick={() => setSelectedInstrument("bass")}>
-        Bass
+        Bajo
       </div>
       <div
         className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "ukulele" ? "active" : "inactive"}`}

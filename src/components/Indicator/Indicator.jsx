@@ -54,10 +54,10 @@ const Indicator = ({ frequency, note, instrumentNotes, isRunning, setIsRunning }
       </div>
       <div className={`flex-c-c ${styles.indicator__btnContainer}`}>
         <button className={`btn ${styles.indicator__btn}`} onClick={() => setIsRunning(true)}>
-          Start
+          <i className="fa-solid fa-play"></i>
         </button>
         <button className={`btn ${styles.indicator__btn}`} onClick={() => setIsRunning(false)}>
-          Pause
+          <i className="fa-solid fa-pause"></i>
         </button>
       </div>
     </div>

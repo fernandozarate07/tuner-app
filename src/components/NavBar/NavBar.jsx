@@ -6,10 +6,10 @@ const NavBar = ({ setSection }) => {
       <h1 className={`color-primary ${styles.navBar__logo}`}>TrueTone</h1>
       <div className={styles.navBar__itemsContainer}>
         <button className={`btn ${styles.navBar__item}`} onClick={() => setSection("tuner")}>
-          Tuner
+          Afinar
         </button>
         <button href="#" className={`btn ${styles.navBar__item}`} onClick={() => setSection("games")}>
-          Games
+          Juegos
         </button>
         {/* <a href="#" className={`btn ${styles.navBar__item}`}>
           Credits
