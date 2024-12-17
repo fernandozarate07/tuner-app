@@ -1,8 +1,16 @@
 .app {
   width: 100%;
   height: 100%;
-
   display: grid;
   grid-template-rows: auto 1fr auto;
   background-color: var(--wh);
+  transition: opacity 0.5s ease-in-out; /* Transición de opacidad */
+}
+
+.fadeIn {
+  opacity: 1; /* Totalmente visible */
+}
+
+.fadeOut {
+  opacity: 0; /* Totalmente invisible */
 }
