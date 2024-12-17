@@ -4,7 +4,7 @@ import styles from "./Notes.module.css";
 const Notes = ({ selectedInstrument }) => {
   const [fadeClass, setFadeClass] = useState(styles.fadeIn); // Estado para manejar la clase de la transición
   const [currentSection, setCurrentSection] = useState(selectedInstrument); // Estado para el instrumento actual
-  const [pushIcon, setPushIcon] = useState(false);
+  const [pushIcon, setPushIcon] = useState(false); // Estado para el boton de notas musicales en la version movil.
 
   const handleClick = () => {
     setPushIcon((prevState) => !prevState);
@@ -28,9 +28,9 @@ const Notes = ({ selectedInstrument }) => {
     const timeout = setTimeout(() => {
       setCurrentSection(selectedInstrument);
       setFadeClass(styles.fadeIn);
-    }, 500); // El tiempo debe coincidir con la duración de la transición en el CSS
+    }, 500);
 
-    return () => clearTimeout(timeout); // Limpiar el timeout si el componente se desmonta
+    return () => clearTimeout(timeout);
   }, [selectedInstrument]);
 
   return (

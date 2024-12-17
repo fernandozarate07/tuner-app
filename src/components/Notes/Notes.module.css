@@ -4,15 +4,15 @@
 .notes {
   display: flex;
   gap: 20px;
-  transition: opacity 0.5s ease-in-out; /* Transición de opacidad */
+  transition: opacity 0.5s ease-in-out;
 }
 
 .fadeIn {
-  opacity: 1; /* Totalmente visible */
+  opacity: 1;
 }
 
 .fadeOut {
-  opacity: 0; /* Totalmente invisible */
+  opacity: 0;
 }
 
 .notes__item {
@@ -54,6 +54,4 @@
   .display-invisible {
     display: none;
   }
-}
-@media (max-width: 992px) {
 }

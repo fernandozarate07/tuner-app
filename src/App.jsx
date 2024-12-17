@@ -6,9 +6,9 @@ import Tuner from "./components/Tuner/Tuner.jsx";
 import Games from "./components/Games/Games.jsx";
 
 function App() {
-  const [section, setSection] = useState("tuner");
-  const [fadeOut, setFadeOut] = useState(false);
-  const [currentSection, setCurrentSection] = useState(section); // Estado para el instrumento actual
+  const [section, setSection] = useState("tuner"); // Estado para seccioens
+  const [fadeOut, setFadeOut] = useState(false); //Estado para la transiciones
+  const [currentSection, setCurrentSection] = useState(section); // Utilizo este estado para activar el fadeOut antes que se actualize la sección
 
   useEffect(() => {
     setFadeOut(true);
@@ -17,8 +17,9 @@ function App() {
       setCurrentSection(section);
       setFadeOut(false);
     }, 500);
-    return () => clearTimeout(timeout); // Limpiar el timeout si el componente se desmonta
+    return () => clearTimeout(timeout);
   }, [section]);
+
   return (
     <div className={`app ${fadeOut ? "fadeOut" : "fadeIn"}`}>
       <NavBar setSection={setSection} />

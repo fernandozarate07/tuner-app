@@ -2,10 +2,11 @@ import { useState } from "react";
 import styles from "./InstrumentsBar.module.css";
 
 const InstrumentsBar = ({ setSelectedInstrument, selectedInstrument }) => {
-  const [pushIcon, setPushIcon] = useState(false);
+  const [pushIcon, setPushIcon] = useState(false); // Estado para el boton de menu de instrumentos
   const handleClick = () => {
     setPushIcon((prevState) => !prevState);
   };
+
   return (
     <div className={styles.barContainer}>
       <div

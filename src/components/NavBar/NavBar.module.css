@@ -12,9 +12,6 @@
   display: flex;
   gap: 20px;
 }
-.navBar__item {
-  font-size: var(--s);
-}
 .navBar__menuIcon {
   display: none;
 }
@@ -28,7 +25,6 @@
     font-size: var(--l);
   }
   .navBar__item {
-    font-size: var(--m);
     background-color: var(--wh);
   }
   .navBar__item:hover {
@@ -58,6 +54,7 @@
     display: none;
   }
 }
+/* Tablets (<= 992px) */
 @media (max-width: 992px) {
   .navBar {
     margin-inline: 50px;
