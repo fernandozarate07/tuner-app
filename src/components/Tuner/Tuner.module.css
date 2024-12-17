@@ -4,8 +4,7 @@
   margin-inline: 200px;
 
   width: 100%;
-  min-height: 400px;
-
+  max-width: 1400px;
   display: grid;
   grid-template-rows: auto 1fr;
   gap: 40px;
@@ -14,10 +13,24 @@
   background-color: var(--gr);
 }
 .tuner__header {
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
 
   border-bottom: 2px solid var(--wh);
   padding-bottom: 10px;
+}
+/* Móviles pequeños (<= 576px) */
+@media (max-width: 576px) {
+  .tuner {
+    margin-inline: 10px;
+  }
+}
+@media (max-width: 992px) {
+  .tuner {
+    margin-inline: 50px;
+  }
 }

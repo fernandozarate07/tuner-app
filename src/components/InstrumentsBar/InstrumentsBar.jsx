@@ -1,23 +1,34 @@
+import { useState } from "react";
 import styles from "./InstrumentsBar.module.css";
 
 const InstrumentsBar = ({ setSelectedInstrument, selectedInstrument }) => {
+  const [pushIcon, setPushIcon] = useState(false);
+  const handleClick = () => {
+    setPushIcon((prevState) => !prevState);
+  };
   return (
-    <div className={styles.instrumentsBar}>
+    <div className={styles.barContainer}>
       <div
-        className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "guitar" ? "active" : "inactive"}`}
-        onClick={() => setSelectedInstrument("guitar")}>
-        Guitarra
+        className={`${!pushIcon ? styles["display-invisible"] : styles["display-visible"]} ${styles.instrumentsBar}`}>
+        <button
+          className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "guitar" ? "active" : "inactive"}`}
+          onClick={() => setSelectedInstrument("guitar")}>
+          Guitarra
+        </button>
+        <button
+          className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "bass" ? "active" : "inactive"}`}
+          onClick={() => setSelectedInstrument("bass")}>
+          Bajo
+        </button>
+        <button
+          className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "ukulele" ? "active" : "inactive"}`}
+          onClick={() => setSelectedInstrument("ukulele")}>
+          Ukulele
+        </button>
       </div>
-      <div
-        className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "bass" ? "active" : "inactive"}`}
-        onClick={() => setSelectedInstrument("bass")}>
-        Bajo
-      </div>
-      <div
-        className={` btn ${styles.instrumentsBar__item} ${selectedInstrument === "ukulele" ? "active" : "inactive"}`}
-        onClick={() => setSelectedInstrument("ukulele")}>
-        Ukulele
-      </div>
+      <button className={styles.menuIcon} onClick={handleClick}>
+        <i className="fa-solid fa-bars"></i>
+      </button>
     </div>
   );
 };

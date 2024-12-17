@@ -1,3 +1,6 @@
+.barContainer {
+  position: relative;
+}
 .instrumentsBar {
   display: flex;
   align-items: center;
@@ -7,4 +10,48 @@
 .instrumentsBar__item {
   cursor: pointer;
   background-color: var(--wh);
+}
+.menuIcon {
+  display: none;
+  font-size: var(--l);
+}
+/* Móviles pequeños (<= 576px) */
+@media (max-width: 576px) {
+  .menuIcon {
+    display: block;
+  }
+  .instrumentsBar__item {
+    font-size: var(--m);
+    background-color: var(--wh);
+    color: var(--bk);
+  }
+  .instrumentsBar__item:hover {
+    background-color: var(--wh);
+    color: var(--bk);
+  }
+  .instrumentsBar {
+    position: absolute;
+    top: 80px;
+    left: 0;
+
+    padding: 20px;
+
+    min-height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background-color: var(--bk-op-2);
+    color: var(--wh);
+    border-radius: 10px;
+  }
+  .display-visible {
+    display: flex;
+  }
+  .display-invisible {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
 }

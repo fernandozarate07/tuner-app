@@ -1,3 +1,6 @@
+.notesContainer {
+  position: relative;
+}
 .notes {
   display: flex;
   gap: 20px;
@@ -16,4 +19,41 @@
   padding: 4px 10px;
   border-radius: 10px;
   background-color: var(--wh);
+}
+.menuIcon {
+  display: none;
+}
+@media (max-width: 576px) {
+  .menuIcon {
+    display: block;
+    font-size: var(--l);
+  }
+  .notes__item {
+    font-size: var(--m);
+  }
+  .notes {
+    position: absolute;
+    top: 80px;
+    right: 0;
+
+    padding: 20px;
+
+    min-height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background-color: var(--bk-op-2);
+    color: var(--wh);
+    border-radius: 10px;
+  }
+  .display-visible {
+    display: flex;
+  }
+  .display-invisible {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
 }

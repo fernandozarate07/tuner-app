@@ -4,6 +4,11 @@ import styles from "./Notes.module.css";
 const Notes = ({ selectedInstrument }) => {
   const [fadeClass, setFadeClass] = useState(styles.fadeIn); // Estado para manejar la clase de la transición
   const [currentSection, setCurrentSection] = useState(selectedInstrument); // Estado para el instrumento actual
+  const [pushIcon, setPushIcon] = useState(false);
+
+  const handleClick = () => {
+    setPushIcon((prevState) => !prevState);
+  };
 
   let notes = [];
 
@@ -29,12 +34,20 @@ const Notes = ({ selectedInstrument }) => {
   }, [selectedInstrument]);
 
   return (
-    <div className={`${styles.notes} ${fadeClass}`}>
-      {notes.map((note, index) => (
-        <div key={index} className={styles.notes__item}>
-          {note}
-        </div>
-      ))}
+    <div className={styles.notesContainer}>
+      <div
+        className={`${!pushIcon ? styles["display-invisible"] : styles["display-visible"]} ${
+          styles.notes
+        } ${fadeClass}`}>
+        {notes.map((note, index) => (
+          <div key={index} className={styles.notes__item}>
+            {note}
+          </div>
+        ))}
+      </div>
+      <button className={styles.menuIcon} onClick={handleClick}>
+        <i className="fa-brands fa-itunes-note"></i>
+      </button>
     </div>
   );
 };

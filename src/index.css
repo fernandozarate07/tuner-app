@@ -17,6 +17,7 @@
   /* colors */
 
   --bk: #353535;
+  --bk-op-2:rgba(0, 0, 0, 0.2);
   --wh: #ffffff;
   --gr: #e5e5e5;
   --primary: #09f04a;
@@ -129,11 +130,7 @@ button {
 
 }
 .btn:hover {
-  background-color: var(--bk);
-  color: var(--wh);
-}
-.btn:hover i{
-  color: var(--gr);
+  background-color: var(--bk-op-2);
 }
 .visible {
   opacity: 1;
@@ -153,12 +150,4 @@ button {
 }
 .pading-bl-20{
   padding-block: 20px;
-}
-.relieve-out {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 
-    3px 3px 5px rgba(0, 0, 0, 0.2),
-    -3px -3px 5px rgba(255, 255, 255, 0.7);
 }

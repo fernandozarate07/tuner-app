@@ -6,10 +6,8 @@
 
 .indicator__screen {
   width: 100%;
-  max-width: 800px;
-  min-height: 300px;
-  padding: 40px;
-  margin: auto;
+  min-height: 250px;
+
   display: grid;
   grid-template-columns: repeat(13, 1fr);
   border-radius: 10px;
@@ -29,37 +27,24 @@
   background-color: var(--wh);
   transition: height 0.3s ease;
 }
-
-.indicator__line.activeLine {
-  background-color: var(--primary); /* Línea activa (verde) */
-}
-
-.indicator__line.inactiveLine {
-  background-color: var(--wh); /* Línea inactiva (negra) */
-}
-
-/* Nuevos colores para las líneas activas */
 .indicator__line.redLine {
   background-color: var(--red);
 }
-
 .indicator__line.yellowLine {
   background-color: var(--yl);
 }
-
 .indicator__line.greenLine {
   background-color: var(--primary);
 }
-
 .indicator__item {
   font-size: 8rem;
   font-weight: 800;
+  color: var(--wh);
 }
-
-.indicator__frequency {
+/* .indicator__frequency {
   font-size: var(--s);
   font-weight: 400;
-}
+} */
 .indicator__btnContainer {
   gap: 40px;
 }
@@ -68,10 +53,11 @@
   padding: 10px 20px;
   font-size: var(--l);
 }
-.defaultNote {
-  color: var(--wh);
-}
-
 .greenNote {
-  color: var(--primary); /* Mismo color que la línea activa central (verde) */
+  color: var(--primary);
 }
+/* Móviles pequeños (<= 576px) */
+/* @media (max-width: 576px) {
+}
+@media (max-width: 992px) {
+} */
