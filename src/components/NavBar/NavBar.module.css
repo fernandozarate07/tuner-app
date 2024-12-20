@@ -15,10 +15,15 @@
 .navBar__menuIcon {
   display: none;
 }
-/* Móviles pequeños (<= 576px) */
+@media (max-width: 992px) {
+  .navBar {
+    margin-inline: 50px;
+  }
+}
+
 @media (max-width: 576px) {
   .navBar {
-    margin-inline: 10px;
+    margin-inline: 25px;
   }
   .navBar__menuIcon {
     display: block;
@@ -52,11 +57,5 @@
   }
   .display-invisible {
     display: none;
-  }
-}
-/* Tablets (<= 992px) */
-@media (max-width: 992px) {
-  .navBar {
-    margin-inline: 50px;
   }
 }

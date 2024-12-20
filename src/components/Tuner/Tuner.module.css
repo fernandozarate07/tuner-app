@@ -4,6 +4,7 @@
 
   width: 100%;
   max-width: 1400px;
+  height: clamp(200px, 100%, 600px);
 
   display: grid;
   grid-template-rows: auto 1fr;
@@ -13,8 +14,6 @@
   background-color: var(--gr);
 }
 .tuner__header {
-  width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,14 +22,14 @@
   border-bottom: 2px solid var(--wh);
   padding-bottom: 10px;
 }
-/* Móviles pequeños (<= 576px) */
-@media (max-width: 576px) {
-  .tuner {
-    margin-inline: 10px;
-  }
-}
 @media (max-width: 992px) {
   .tuner {
     margin-inline: 50px;
+  }
+}
+@media (max-width: 576px) {
+  .tuner {
+    margin-inline: 25px;
+    gap: 20px;
   }
 }

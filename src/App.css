@@ -6,3 +6,8 @@
   background-color: var(--wh);
   transition: opacity 0.5s ease-in-out;
 }
+@media (max-width: 576px) {
+  .containerSpa {
+    align-items: flex-start;
+  }
+}

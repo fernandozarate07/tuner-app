@@ -15,7 +15,6 @@
   display: none;
   font-size: var(--l);
 }
-/* Móviles pequeños (<= 576px) */
 @media (max-width: 576px) {
   .menuIcon {
     display: block;
